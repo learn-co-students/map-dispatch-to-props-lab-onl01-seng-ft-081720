@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { addRestaurant } from '../actions/restaurants';
 import { connect } from 'react-redux';
+import manageRestaurants from '../reducers/manageRestaurants';
+import App from '../App';
 
 export class RestaurantInput extends Component {
 
@@ -23,7 +25,7 @@ export class RestaurantInput extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // add missing code
+   this.props.addRestaurant(this.state)
   }
 
   render() {
@@ -47,8 +49,5 @@ export class RestaurantInput extends Component {
       </form>
     );
   }
-};
-
-
-//connect this component by wrapping RestaurantInput below
-export default RestaurantInput
+}
+export default connect(null, {addRestaurant})(RestaurantInput);
